@@ -31,7 +31,7 @@ class CaesarCipher:
     
 
 
-caat=CaesarCipher(74)
+caat=CaesarCipher(4)
 caat.encrypt('amk')
 caat.decrypt()
 
