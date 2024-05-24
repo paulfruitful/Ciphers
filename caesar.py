@@ -1,48 +1,42 @@
-
 class CaesarCipher:
-    def __init__(self) :
-        
-        self.symbols='abcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()_-+={}[]|\:;\"\',<>./?Δƒ€ŠŒ©®§'
-        self.char_dict=  {char: index for index, char in enumerate(self.symbols)}
-        
-        self.key=None
-        self.text=''
-        self.cipher=''
-    def encrypt(self,text,key):
-        if key>len(self.symbols):
-            return print('Key can\'t be greater than',len(self.symbols))
-        self.key=key
-        text=text.lower()
-        for i in text:
-            curr=self.char_dict[i]
-            
-            curr=(self.key+curr)%len(self.symbols) 
-           
-            self.cipher+=self.symbols[curr]
+    def __init__(self):
+        self.symbols = 'abcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()_-+={}[]|\\:;\"\'<>,.?/Δƒ€ŠŒ©®§'
+        self.char_dict = {char: index for index, char in enumerate(self.symbols)}
+        self.key = None
+        self.cipher = ''
+        self.text = ''
+
+    def encrypt(self, text, key):
+        if key > len(self.symbols):
+            return f"Key can't be greater than {len(self.symbols)}"
+        self.key = key
+        self.cipher = ''  # Reset cipher text
+        for char in text:
+            if char in self.char_dict:
+                curr = self.char_dict[char]
+                curr = (self.key + curr) % len(self.symbols)
+                self.cipher += self.symbols[curr]
+            else:
+                self.cipher += char  # Keep unknown characters unchanged
         return self.cipher
 
-    def decrypt(self,text,key):
-        if key>len(self.symbols):
-            return print('Key can\'t be greater than',len(self.symbols)) 
-               
-        self.key=key
-        for i in text:
-            curr=self.char_dict[i]
-           
-            curr=(curr-self.key)%len(self.symbols)
-           
-            self.text+=self.symbols[curr]
-        
+    def decrypt(self, text, key):
+        if key > len(self.symbols):
+            return f"Key can't be greater than {len(self.symbols)}"
+        self.key = key
+        self.text = ''  # Reset decrypted text
+        for char in text:
+            if char in self.char_dict:
+                curr = self.char_dict[char]
+                curr = (curr - self.key) % len(self.symbols)
+                self.text += self.symbols[curr]
+            else:
+                self.text += char  # Keep unknown characters unchanged
         return self.text
-    
 
-
-
-
-
-
-
-        
-cat=CaesarCipher()
-h=cat.encrypt('Hllo',2)
-cat.decrypt(h,2)
+# Example usage:
+cat = CaesarCipher()
+encrypted = cat.encrypt('Hello, World!', 2)
+print(f"Encrypted: {encrypted}")
+decrypted = cat.decrypt(encrypted, 2)
+print(f"Decrypted: {decrypted}")
