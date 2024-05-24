@@ -10,7 +10,7 @@ class CaesarCipher:
         self.cipher=''
     def encrypt(self,text,key):
         if key>len(self.symbols):
-            return print('Key can\'t be greater than 26 ')
+            return print('Key can\'t be greater than',len(self.symbols))
         self.key=key
         text=text.lower()
         for i in text:
@@ -21,17 +21,18 @@ class CaesarCipher:
             self.cipher+=self.symbols[curr]
         return self.cipher
 
-    def decrypt(self,key):
+    def decrypt(self,text,key):
         if key>len(self.symbols):
-            return print('Key can\'t be greater than 26 ')
+            return print('Key can\'t be greater than',len(self.symbols)) 
+               
         self.key=key
-        for i in self.cipher:
+        for i in text:
             curr=self.char_dict[i]
            
             curr=(curr-self.key)%len(self.symbols)
            
             self.text+=self.symbols[curr]
-      
+        
         return self.text
     
 
@@ -42,4 +43,6 @@ class CaesarCipher:
 
 
         
-
+cat=CaesarCipher()
+h=cat.encrypt('Hllo',2)
+cat.decrypt(h,2)
