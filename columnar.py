@@ -19,8 +19,7 @@ class ColumnarCipher:
     return ciphertext
 
   def decrypt(self,key, ciphertext):
-    if key < 2 or key >= len(ciphertext):
-        return 'Your Key Is Not Strong Enough'
+    
     
     num_full_columns = len(ciphertext) // key
     num_extra_chars = len(ciphertext) % key
@@ -44,13 +43,7 @@ class ColumnarCipher:
 
 
    
-    
-test=ColumnarCipher()
-x=test.encrypt(10,'catholic my man eats hat bick please helperand make sheep so kay')
-print(x)
-#test.decrypt(3,x)
-plaintext = test.decrypt(10, x)
-print(plaintext)
+ 
 
     
         

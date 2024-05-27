@@ -34,9 +34,4 @@ class CaesarCipher:
                 self.text += char  # Keep unknown characters unchanged
         return self.text
 
-# Example usage:
-cat = CaesarCipher()
-encrypted = cat.encrypt('Hello, World!', 2)
-print(f"Encrypted: {encrypted}")
-decrypted = cat.decrypt(encrypted, 2)
-print(f"Decrypted: {decrypted}")
+
