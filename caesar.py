@@ -7,8 +7,7 @@ class CaesarCipher:
         self.text = ''
 
     def encrypt(self, text, key):
-        if key > len(self.symbols):
-            return f"Key can't be greater than {len(self.symbols)}"
+        
         self.key = key
         self.cipher = ''  # Reset cipher text
         for char in text:
@@ -21,8 +20,6 @@ class CaesarCipher:
         return self.cipher
 
     def decrypt(self, text, key):
-        if key > len(self.symbols):
-            return f"Key can't be greater than {len(self.symbols)}"
         self.key = key
         self.text = ''  # Reset decrypted text
         for char in text:
