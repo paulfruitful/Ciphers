@@ -2,7 +2,7 @@ from caesar import CaesarCipher
 from columnar import ColumnarCipher
 
 
-class DoubleCipher:
+class ColsarCipher:
     def encrypt(self, text, key):
         caesar = CaesarCipher()
         columnar = ColumnarCipher()
@@ -25,6 +25,3 @@ class DoubleCipher:
 
 
 
-test=DoubleCipher()
-x=test.encrypt('The Legacy of Frankenstein: A New Chapter',15)
-print(test.decrypt(x,15))

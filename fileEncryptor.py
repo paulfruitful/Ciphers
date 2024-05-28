@@ -1,5 +1,6 @@
 from caesar import CaesarCipher
 from columnar import ColumnarCipher
+from columnar_caesar import ColsarCipher
 
 def read_file(file_path):
     try:
@@ -22,6 +23,7 @@ def main():
     print(''' Encryption Algorithms Available For Now:
           - Caesar Cipher
           - Columnar Transposition Cipher
+          - Columnar + Caesar Cipher (Colsar)
 
  ''')
     enc_mode = input('What kind of encryption are you using? ')
@@ -33,11 +35,26 @@ def main():
 
     caesar = CaesarCipher()
     columnar=ColumnarCipher()
+    colsar=ColsarCipher()
 
     if mode.startswith('e') and enc_mode.lower() == 'caesar':
         cipher = caesar.encrypt(content, key)
         write_file(file_path, cipher)
         print("File encrypted successfully.")
+    if mode.startswith('d') and enc_mode.lower() == 'caesar':
+        text = caesar.decrypt(content, key)
+        write_file(file_path, text)
+        print("File decrypted successfully.")
+    if mode.startswith('e') and enc_mode.lower() == 'colsar':
+        text = colsar.decrypt(content, key)
+        write_file(file_path, text)
+        print("File decrypted successfully.")
+
+    if mode.startswith('d') and enc_mode.lower() == 'colsar':
+        text = colsar.decrypt(content, key)
+        write_file(file_path, text)
+        print("File decrypted successfully.")
+
     if mode.startswith('e') and enc_mode.lower() == 'columnar':
         cipher = columnar.encrypt(key,content)
         write_file(file_path, cipher)    
@@ -46,10 +63,6 @@ def main():
         cipher = columnar.decrypt(key,content)
         print("File decrypted successfully.")
         write_file(file_path, cipher)       
-    if mode.startswith('d') and enc_mode.lower() == 'caesar':
-        text = caesar.decrypt(content, key)
-        write_file(file_path, text)
-        print("File decrypted successfully.")
     else:
         print("Invalid mode or encryption type selected.")
 
