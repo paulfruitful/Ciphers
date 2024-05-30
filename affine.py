@@ -19,6 +19,9 @@ class MultiplicationCipher:
             else:
                 cipher+=char
         return cipher
+    def modularInverse(self,key,symbol):
+        if self.gcd(key,symbol)!=1:
+            return 'No Modular Inverse '
    
 
 
