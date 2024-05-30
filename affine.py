@@ -54,6 +54,7 @@ class AffineCipher:
             return num2
         num1,num2 = num2%num1, num1
         return self.gcd(num1,num2)
+    
     def modularInverse(self,key,symbol):
         if self.gcd(key,symbol)!=1:
             return 'No Modular Inverse '
@@ -63,6 +64,7 @@ class AffineCipher:
           q = u3 // v3 
           v1, v2, v3, u1, u2, u3 = (u1 - q * v1), (u2 - q * v2), (u3 - q * v3), v1, v2, v3
         return u1 % symbol
+    
     def encrypt(self,text,key,key2):
         if self.gcd(key,len(self.symbols))!=1:
             return f'Key must be a prime or co-prime of {len(self.symbols)}'
@@ -75,6 +77,7 @@ class AffineCipher:
             else:
                 cipher+=char
         return cipher
+    
     def decrypt(self,cipher,key,key2):
         text=''
         for char in cipher:
@@ -88,7 +91,7 @@ class AffineCipher:
                 text+=char
         return text
 
-
+'''
 test=AffineCipher()
 a=test.encrypt('My Obi man na  man',1456,67)
-print(test.decrypt(a,1456,67)) 
+print(test.decrypt(a,1456,67)) '''
