@@ -2,7 +2,6 @@ class CaesarCipher:
     def __init__(self):
         self.symbols = 'abcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()_-+={}[]|\\:;\"\'<>,.?/Δƒ€ŠŒ©®§'
         self.char_dict = {char: index for index, char in enumerate(self.symbols)}
-        self.key = None
         self.cipher = ''
         self.text = ''
 
