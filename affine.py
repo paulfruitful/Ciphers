@@ -38,8 +38,8 @@ class MultiplicationCipher:
             if char in self.char_dict:
                 curr = self.char_dict[char]
                
-                curr = curr//key
-                print(curr)
+                curr =(curr*self.modularInverse(key,len(self.symbols)))%len(self.symbols)
+             
                 text+=self.symbols[curr]
             else:
                 text+=char
@@ -47,4 +47,4 @@ class MultiplicationCipher:
 
 test=MultiplicationCipher()
 a=test.encrypt('My Obi man na  man',1456)
-print(test.modularInverse(53,66)) 
+print(test.decrypt(a,1456)) 
